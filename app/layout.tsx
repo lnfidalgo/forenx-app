@@ -1,4 +1,5 @@
 import { Providers } from "./providers"
+import { AuthProvider } from "@/providers/auth-provider"
 
 export const metadata = {
   title: 'Next.js',
@@ -11,10 +12,12 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body>
-       <Providers>{children}</Providers> 
-      </body>
-    </html>
+    <AuthProvider>
+      <html lang="en">
+        <body>
+          <Providers>{children}</Providers> 
+        </body>
+      </html>
+      </AuthProvider>
   )
 }

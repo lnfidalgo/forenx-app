@@ -1,4 +1,4 @@
-import { Providers } from "./providers"
+import { Providers } from "../../providers/chakra-provider"
 import { AuthProvider } from "@/providers/auth-provider"
 
 export const metadata = {
@@ -18,6 +18,6 @@ export default function RootLayout({
           <Providers>{children}</Providers> 
         </body>
       </html>
-      </AuthProvider>
+    </AuthProvider>
   )
 }

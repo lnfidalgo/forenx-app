@@ -1,11 +1,13 @@
 import Header from "@/src/app/components/header"
-import LoginPage from "./pages/login/page"
+import Content from "./components/content"
+import Feedback from "./components/feedback"
 
 export default function Home() {
   return (
     <main>
-      <Header></Header>
-      <LoginPage/>
+      <Header />
+      <Content />
+      <Feedback />
     </main>
   )
 }

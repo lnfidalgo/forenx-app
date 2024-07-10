@@ -33,6 +33,7 @@ const authOptions: NextAuthOptions = {
 
         return doctor
       }
+      
     })
   ],
   callbacks: {

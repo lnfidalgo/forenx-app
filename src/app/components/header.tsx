@@ -8,7 +8,7 @@ export default async function Header() {
   const session = await getServerSession()
 
   return (
-    <Flex w='100vw' bg='aquamarine' p={5} align='center' justify='center' >
+    <Flex w='100vw' paddingY={5} paddingX={20} background='white' align='center' justify='center' >
       <Box>
         <Image
           src="../images/IMG-20240507-WA0018.jpg"
@@ -17,7 +17,7 @@ export default async function Header() {
         />
       </Box>
       <Spacer />
-      <Box display='flex' alignItems='center' justifyContent='center' gap='8'>
+      <Box display='flex' alignItems='center' justifyContent='center' gap='10'>
         <Link as={NextLink} href='./private'>Privado</Link>
         <Link as={NextLink} href='./public'>Cliente</Link>
         {!session && <LoginLink />}

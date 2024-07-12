@@ -5,7 +5,7 @@ import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { formSchema } from "@/src/lib/config-signup-zod";
 import { useState } from "react";
-import { useForm, FormProvider } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import {
   Button,
   useToast,
@@ -20,6 +20,7 @@ import {
   Image,
   Spinner,
 } from "@chakra-ui/react";
+import GoogleButtonSignin from "./google-button-signin";
 
 type InputType = z.infer<typeof formSchema>;
 
@@ -149,6 +150,10 @@ export function SignUpForm() {
             )}
             Criar conta
           </Button>
+          <GoogleButtonSignin
+            typeSubmit="signup"
+            // callbackUrl={callbackUrl}
+          />
         </form>
       </Flex>
       <Spacer />

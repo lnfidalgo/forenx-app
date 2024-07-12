@@ -17,6 +17,8 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
+import GoogleIcon from "../icons/googleIcon";
+import GoogleButtonSignin from "./google-button-signin";
 
 const formSchema = z.object({
   email: z
@@ -143,6 +145,7 @@ export function SignInForm({ callbackUrl }: Props) {
             )}
             Entrar
           </Button>
+          <GoogleButtonSignin typeSubmit="signin" callbackUrl='/' />
         </form>
       </Flex>
     </Flex>

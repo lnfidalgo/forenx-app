@@ -1,5 +1,5 @@
 import { Box, Flex, Spacer, Text } from "@chakra-ui/react";
-import { Textt } from "../themes/text-theme";
+import { Textt } from "../app/themes/text-theme";
 import FeedbackCard from "./feedback-card";
 
 export default function Feedback() {

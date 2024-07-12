@@ -1,5 +1,5 @@
 import { Providers } from "../../providers/chakra-provider"
-import { AuthProvider } from "@/providers/auth-provider"
+import { AuthProvider } from "../components/auth-provider" 
 
 export const metadata = {
   title: 'Next.js',

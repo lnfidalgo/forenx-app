@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { signIn } from "next-auth/react";
 
-import GoogleIcon from '../icons/googleIcon'
-import { Button, Spinner } from "@chakra-ui/react";
+import { FcGoogle } from "react-icons/fc";
+import { Button, Spinner, Text } from "@chakra-ui/react";
 
 interface Props {
   typeSubmit: "signin" | "signup";
@@ -14,10 +14,10 @@ export default function GoogleButtonSignin({ typeSubmit, callbackUrl }: Props) {
 
   return (
     <Button
+      boxShadow={'xl'}
       variant="outline"
       type="button"
       disabled={isLoading}
-      className="flex items-center justify-center gap-2 "
       onClick={() => {
         setIsLoading(true);
         signIn("google", { callbackUrl });
@@ -28,9 +28,13 @@ export default function GoogleButtonSignin({ typeSubmit, callbackUrl }: Props) {
           <Spinner />
         </span>
       ) : (
-        <GoogleIcon size={16} />
-      )}{" "}
-      {typeSubmit === "signup" ? "Sign Up with Google" : "Sign in with Google"}
+        <FcGoogle size={30} />
+      )}
+      <Text fontWeight={300} marginLeft={2}>
+        {typeSubmit === "signup"
+          ? "Criar conta com Google"
+          : "Continuar com o Google"}
+      </Text>
     </Button>
   );
 }

@@ -3,9 +3,8 @@ import { extendTheme, defineStyleConfig } from '@chakra-ui/react'
 export const Textt = defineStyleConfig({
   sizes: {
     sm: {
-    fontSize: '20px',
+    fontSize: '50px',
     fontWeight: 'bold',
-    textTransform: 'uppercase',
     lineHeight: '110%',
     letterSpacing: '-1%',
     }

@@ -9,8 +9,6 @@ export default function DoctorPage() {
     <>
       <MainHeader />
       <Content />
-      <Feedback />
-      <Content />
     </>
   );
 }

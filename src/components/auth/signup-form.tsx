@@ -5,6 +5,7 @@ import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { formSchema } from "@/src/lib/config-signup-zod";
 import { useState } from "react";
+import Image from "next/image";
 import { useForm } from "react-hook-form";
 import {
   Button,
@@ -17,10 +18,15 @@ import {
   Text,
   Box,
   Spacer,
-  Image,
   Spinner,
+  Grid,
+  GridItem,
+  IconButton,
+  LinkOverlay,
 } from "@chakra-ui/react";
 import GoogleButtonSignin from "./google-button-signin";
+import backGroudImage from "../images/background.jpg";
+import { ArrowBackIcon } from "@chakra-ui/icons";
 
 type InputType = z.infer<typeof formSchema>;
 
@@ -68,29 +74,34 @@ export function SignUpForm() {
   }
 
   return (
-    <Flex
-      height="100vh"
-      w="1200px"
-      alignItems="center"
-      justifyContent="center"
-      marginX="auto"
-    >
+    <Flex>
       <Flex
         direction="column"
         alignItems="center"
         justifyContent="center"
         backgroundColor="white"
-        w="600px"
-        minW="360px"
-        h="600px"
+        minW="600px"
       >
+        <LinkOverlay href="/" position={"absolute"} bottom={5} left={5}>
+          <ArrowBackIcon boxSize={10} />
+        </LinkOverlay>
+        <Text
+          fontWeight={"bold"}
+          fontSize={"25px"}
+          position={"absolute"}
+          top={10}
+          left={10}
+          textColor={"#F5BAE6"}
+        >
+          PsicoCampo -.-
+        </Text>
         <Text fontSize="xx-large" fontWeight="bold" mb="25px">
-          Sign Up
+          Crie sua conta
         </Text>
         <form onSubmit={handleSubmit(onSubmit)}>
           <FormControl>
             <FormLabel htmlFor="username">Username</FormLabel>
-            <Input {...register("username")} />
+            <Input {...register("username")} placeholder="Ex: Roronoa Zoro" />
             <FormErrorMessage>
               {errors.username && <span>{errors.username.message}</span>}
             </FormErrorMessage>
@@ -130,7 +141,7 @@ export function SignUpForm() {
           </FormControl>
           <FormControl>
             <FormLabel htmlFor="role">Role</FormLabel>
-            <Input {...register("role")} />
+            <Input {...register("role")} placeholder="user ou doctor" />
           </FormControl>
           <Button
             background="#8CB1E6"
@@ -150,21 +161,29 @@ export function SignUpForm() {
             )}
             Criar conta
           </Button>
+          <Text
+            display={"flex"}
+            marginY={15}
+            alignItems={"center"}
+            justifyContent={"center"}
+          >
+            ou
+          </Text>
           <GoogleButtonSignin
             typeSubmit="signup"
             // callbackUrl={callbackUrl}
           />
         </form>
       </Flex>
-      <Spacer />
-      <Box>
+      <Flex>
         <Image
-          h="600px"
-          src="https://bit.ly/dan-abramov"
-          alt="teste"
-          borderRadius={20}
+          src={backGroudImage}
+          alt="Imagem de floresta bonita"
+          style={{
+            height: "100vh",
+          }}
         />
-      </Box>
+      </Flex>
     </Flex>
   );
 }

@@ -19,12 +19,19 @@ export default function ProfileButton() {
       case "doctor":
         return (
           <Menu>
-            <MenuButton as={Button} colorScheme="pink">
+            <MenuButton
+              as={Button}
+              bg={"#E6ADC5"}
+              color={"white"}
+              _hover={{
+                background: "#F5BAE6",
+              }}
+            >
               Profile
             </MenuButton>
             <MenuList>
-              <MenuGroup title="Sou um doctor">
-                <MenuItem>My Account</MenuItem>
+              <MenuGroup title={`Dr.(a) ${session.user.username}`}>
+                <MenuItem>Agenda</MenuItem>
                 <MenuItem>
                   <Link href="" onClick={() => signOut()}>
                     Sair
@@ -37,12 +44,19 @@ export default function ProfileButton() {
       default:
         return (
           <Menu>
-            <MenuButton as={Button} colorScheme="pink">
+            <MenuButton
+              as={Button}
+              bg={"#E6ADC5"}
+              color={"white"}
+              _hover={{
+                background: "#F5BAE6",
+              }}
+            >
               Profile
             </MenuButton>
             <MenuList>
-              <MenuGroup title="Sou um user">
-                <MenuItem>My Account</MenuItem>
+              <MenuGroup title={session?.user.username}>
+                <MenuItem>Colsultas</MenuItem>
                 <MenuItem>
                   <Link href="" onClick={() => signOut()}>
                     Sair
@@ -55,7 +69,5 @@ export default function ProfileButton() {
     }
   };
 
-  return (
-    <>{ButtonProfile()}</>
-  );
+  return <>{ButtonProfile()}</>;
 }

@@ -9,8 +9,6 @@ export default function UserPage() {
     <>
       <MainHeader />
       <Content />
-      <Feedback />
-      <Content />
     </>
   );
 }

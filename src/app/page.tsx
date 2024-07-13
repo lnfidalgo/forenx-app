@@ -9,7 +9,7 @@ import MainHeader from "@/src/components/main-header";
 
 export default function Home() {
   const { data: session } = useSession();
-  console.log(session)
+  console.log(session);
 
   const testPageRender = () => {
     switch (session?.user.role) {
@@ -21,8 +21,6 @@ export default function Home() {
         return (
           <>
             <MainHeader />
-            <Content />
-            <Feedback />
             <Content />
           </>
         );

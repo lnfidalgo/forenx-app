@@ -26,7 +26,7 @@ export const Buttonn = defineStyleConfig({
     },
     solid: {
       bg: 'purple.500',
-      color: 'white',
+      color: 'red',
     },
   },
   defaultProps: {

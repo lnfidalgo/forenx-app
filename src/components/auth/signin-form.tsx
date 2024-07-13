@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import {
   Button,
@@ -10,15 +10,27 @@ import {
   Spinner,
   useToast,
   Text,
+  InputRightElement,
+  InputGroup,
+  InputLeftElement,
+  LinkOverlay,
 } from "@chakra-ui/react";
+import {
+  EmailIcon,
+  LockIcon,
+  ViewIcon,
+  ViewOffIcon,
+  ArrowBackIcon,
+} from "@chakra-ui/icons";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
-import GoogleIcon from "../icons/googleIcon";
 import GoogleButtonSignin from "./google-button-signin";
+import backgroundlogin from "../images/mick-haupt-X3PqG6WylgQ-unsplash.jpg";
+import Image from "next/image";
 
 const formSchema = z.object({
   email: z
@@ -40,6 +52,7 @@ export function SignInForm({ callbackUrl }: Props) {
   const [show, setShow] = useState(false);
   const toast = useToast();
 
+  const handleClick = () => setShow(!show);
   const router = useRouter();
 
   const {
@@ -49,7 +62,7 @@ export function SignInForm({ callbackUrl }: Props) {
   } = useForm<InputType>({
     resolver: zodResolver(formSchema),
   });
-
+  console.log(errors.email?.message);
   async function onSubmit(values: InputType) {
     try {
       setIsLoading(true);
@@ -87,41 +100,78 @@ export function SignInForm({ callbackUrl }: Props) {
   }
 
   return (
-    <Flex
-      height="100vh"
-      w="1200px"
-      alignItems="center"
-      justifyContent="center"
-      marginX="auto"
-    >
+    <Flex alignItems="center" justifyContent="center">
+      <Image
+        src={backgroundlogin}
+        alt="Montanhas bonitas"
+        style={{
+          height: "100vh",
+          overflow: "hidden",
+        }}
+      ></Image>
       <Flex
         direction="column"
         alignItems="center"
         justifyContent="center"
         backgroundColor="white"
-        w="600px"
-        minW="360px"
         h="600px"
+        minW="500px"
+        position={"absolute"}
+        borderRadius={8}
+        boxShadow={"dark-lg"}
       >
+        <LinkOverlay href="/" position={"absolute"} bottom={5} left={5}>
+          <ArrowBackIcon boxSize={10} />
+        </LinkOverlay>
+        <Text
+          fontWeight={"bold"}
+          fontSize={"25px"}
+          position={"absolute"}
+          top={5}
+          left={5}
+          textColor={"#F5BAE6"}
+        >
+          PsicoCampo -.-
+        </Text>
         <Text fontSize="xx-large" fontWeight="bold" mb="25px">
           Log In
         </Text>
         <form onSubmit={handleSubmit(onSubmit)}>
           <FormControl>
             <FormLabel htmlFor="email">Email</FormLabel>
-            <Input {...register("email")} placeholder="youremail@example.com" />
-            <FormErrorMessage>
-              {errors.email && <span>{errors.email.message}</span>}
-            </FormErrorMessage>
+            <InputGroup>
+              <InputLeftElement>
+                <EmailIcon color={"grey"} />
+              </InputLeftElement>
+              <Input
+                {...register("email")}
+                placeholder="youremail@example.com"
+                boxShadow={"xl"}
+              />
+            </InputGroup>
           </FormControl>
           <FormControl>
             <FormLabel htmlFor="password">Password</FormLabel>
-            <Input
-              {...register("password")}
-              type={show ? "text" : "password"}
-              placeholder="********"
-              background="white"
-            />
+            <InputGroup>
+              <InputLeftElement>
+                <LockIcon color={"grey"} />
+              </InputLeftElement>
+              <Input
+                {...register("password")}
+                type={show ? "text" : "password"}
+                placeholder="********"
+                boxShadow={"xl"}
+              />
+              <InputRightElement>
+                <Button h="1.75rem" size="sm" onClick={handleClick}>
+                  {show ? (
+                    <ViewIcon color={"grey"} />
+                  ) : (
+                    <ViewOffIcon color={"grey"} />
+                  )}
+                </Button>
+              </InputRightElement>
+            </InputGroup>
             <FormErrorMessage>
               {errors.password && <span>{errors.password.message}</span>}
             </FormErrorMessage>
@@ -145,7 +195,15 @@ export function SignInForm({ callbackUrl }: Props) {
             )}
             Entrar
           </Button>
-          <GoogleButtonSignin typeSubmit="signin" callbackUrl='/' />
+          <Text
+            display={"flex"}
+            marginY={15}
+            alignItems={"center"}
+            justifyContent={"center"}
+          >
+            ou
+          </Text>
+          <GoogleButtonSignin typeSubmit="signin" callbackUrl="/" />
         </form>
       </Flex>
     </Flex>

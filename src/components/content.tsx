@@ -12,6 +12,7 @@ import Image from "next/image";
 import flor from "./images/small-image.jpg";
 import moldura from "./images/moldura.png";
 import NextLink from "next/link";
+import ModalComponent from "./modal";
 
 export default function Content() {
   const { data: session } = useSession();
@@ -41,6 +42,7 @@ export default function Content() {
                 <Text color={"#CE99E6"}>Dr.(a) {session.user.username}</Text>
               </Text>
               <Text fontSize={25}>Como você está se sentindo hoje?</Text>
+              <ModalComponent />
             </Flex>
             <Flex height="500px" w="600px">
               <Box pos={"relative"}>
@@ -93,6 +95,7 @@ export default function Content() {
                 Bem vindo(a) de volta ao PsicoCampo -.-, {session.user.username}
               </Text>
               <Text fontSize={25}>Como você está se sentindo hoje?</Text>
+              <ModalComponent />
             </Flex>
             <Flex height="500px" w="600px">
               <Box pos={"relative"}>

@@ -18,6 +18,7 @@ export default function GoogleButtonSignin({ typeSubmit, callbackUrl }: Props) {
       variant="outline"
       type="button"
       disabled={isLoading}
+      w={'100%'}
       onClick={() => {
         setIsLoading(true);
         signIn("google", { callbackUrl });

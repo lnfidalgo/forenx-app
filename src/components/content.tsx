@@ -6,7 +6,7 @@ import {
   Spacer,
   Text,
 } from "@chakra-ui/react";
-import { Textt } from "../app/themes/text-theme";
+import { Textt } from "../themes/text-theme";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 import flor from "./images/small-image.jpg";

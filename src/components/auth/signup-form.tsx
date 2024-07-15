@@ -99,7 +99,7 @@ export function SignUpForm() {
           Crie sua conta
         </Text>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <FormControl>
+          <FormControl isInvalid={!!errors.username}>
             <FormLabel htmlFor="username">Username</FormLabel>
             <Input {...register("username")} placeholder="Ex: Roronoa Zoro" />
             <FormErrorMessage>

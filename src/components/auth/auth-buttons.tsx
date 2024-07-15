@@ -1,14 +1,28 @@
 "use client";
 
-import { Button, Flex, Link, Text, LinkBox, LinkOverlay } from "@chakra-ui/react";
-import { Buttonn } from "../../app/themes/button-theme";
+import {
+  Button,
+  Flex,
+  Link,
+  Text,
+  LinkBox,
+  LinkOverlay,
+} from "@chakra-ui/react";
+import { Buttonn } from "../../themes/button-theme";
 import { signIn } from "next-auth/react";
 import NextLink from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function AuthButtons() {
+  const router = useRouter();
+  /*const style = {
+    bg: "grey",
+  };
+*/
   return (
     <Flex gap="50px">
       <Button
+        //sx={style}
         _hover={{
           background: "#CE99E6",
           variant: "solid",
@@ -22,7 +36,8 @@ export default function AuthButtons() {
       >
         Entrar
       </Button>
-      <LinkBox
+      <Button
+        onClick={() => router.push("/auth/signup")}
         display={"flex"}
         justifyContent={"center"}
         alignItems={"center"}
@@ -31,11 +46,9 @@ export default function AuthButtons() {
         borderColor="black"
         borderRadius={18}
         w={140}
-        as={NextLink}
-        href="/auth/signup"
       >
         Criar conta
-      </LinkBox>
+      </Button>
     </Flex>
   );
 }

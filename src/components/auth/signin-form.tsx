@@ -58,11 +58,23 @@ export function SignInForm({ callbackUrl }: Props) {
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
   } = useForm<InputType>({
     resolver: zodResolver(formSchema),
   });
-  console.log(errors.email?.message);
+
+  const watchFields = watch(["email", "password"]);
+
+  const handleInputValue = () => {
+    if (watchFields === undefined || "" ) {
+      return true;
+    }
+    return false;
+  };
+  handleInputValue()
+  console.log(handleInputValue())
+
   async function onSubmit(values: InputType) {
     try {
       setIsLoading(true);
@@ -137,7 +149,7 @@ export function SignInForm({ callbackUrl }: Props) {
           Log In
         </Text>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <FormControl>
+          <FormControl marginBottom={5}>
             <FormLabel htmlFor="email">Email</FormLabel>
             <InputGroup>
               <InputLeftElement>
@@ -182,7 +194,7 @@ export function SignInForm({ callbackUrl }: Props) {
             mt="2rem"
             type="submit"
             w="100%"
-            disabled={isLoading}
+            isDisabled={handleInputValue()}
           >
             {isLoading && (
               <Spinner
